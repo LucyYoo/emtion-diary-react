@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import React from "react";
 
 const EmotionItem = ({
   emotion_id,
@@ -21,7 +22,7 @@ const EmotionItem = ({
   );
 };
 
-export default EmotionItem;
+export default React.memo(EmotionItem);
 
 const emotionsColor = {
   1: "#64c964",

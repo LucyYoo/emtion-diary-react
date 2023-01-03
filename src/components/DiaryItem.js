@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "@emotion/styled";
 import { useNavigate } from "react-router-dom";
 import MyButton from "./MyButton";
@@ -33,7 +34,7 @@ const DiaryItem = ({ id, emotion, content, date }) => {
   );
 };
 
-export default DiaryItem;
+export default React.memo(DiaryItem);
 
 const emotionsColor = {
   1: "#64c964",
