@@ -25,7 +25,7 @@ const DiaryItem = ({ id, emotion, content, date }) => {
       </ImgWrapper>
       <InfoWapper onClick={goDetail}>
         <DiaryDate>{strDate}</DiaryDate>
-        <DiaryContentPrivew>{content.slice(0, 25)}</DiaryContentPrivew>
+        <DiaryContentPrivew>{content}</DiaryContentPrivew>
       </InfoWapper>
       <BtnWarpper>
         <MyButton text="수정하기" onClick={goEdit} />
@@ -72,14 +72,21 @@ const InfoWapper = styled.div`
 
 const DiaryDate = styled.div`
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
   margin-bottom: 5px;
 `;
 
 const DiaryContentPrivew = styled.div`
-  font-size: 18px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 390px;
+  font-size: 16px;
 `;
 
 const BtnWarpper = styled.div`
+  display: flex;
+  align-items: center;
   min-width: 70px;
+  font-size: 14px;
 `;

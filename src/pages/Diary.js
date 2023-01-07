@@ -1,23 +1,23 @@
 import styled from "@emotion/styled";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { DiaryStateContext } from "../App";
 import MyButton from "../components/MyButton";
 import MyHeader from "../components/MyHeader";
+import { useDiaryState } from "../context/DiaryContext";
 import { getStringDate } from "../utils/date";
 import { emotionList } from "../utils/emotion";
 
 const Diary = () => {
   const { id } = useParams();
-  const diaryList = useContext(DiaryStateContext);
+  const diaryList = useDiaryState();
   const navigate = useNavigate();
   const [data, setData] = useState();
-  
+
   useEffect(() => {
-    const titleElement = document.getElementsByTagName('title')[0];
-    titleElement.innerHTML = `감정 일기장 - ${id}번 일기`
-  })
-  
+    const titleElement = document.getElementsByTagName("title")[0];
+    titleElement.innerHTML = `감정 일기장 - ${id}번 일기`;
+  });
+
   useEffect(() => {
     if (diaryList.length >= 1) {
       const targetDiary = diaryList.find(
@@ -132,7 +132,7 @@ const DiaryContentWrapper = styled.div`
     padding: 20px;
     text-align: left;
     font-size: 20px;
-    font-family: "Yeon Sung";
+    font-family: "Noto Serif KR", serif;
     font-weight: 400;
     line-height: 2.5;
   }

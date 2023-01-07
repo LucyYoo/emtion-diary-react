@@ -119,5 +119,5 @@ const MenuSelect = styled.select`
   padding: 10px 20px;
 
   cursor: pointer;
-  font-family: Nanum Pen Script;
+  font-family: "Gowun Dodum", sans-serif; ;
 `;

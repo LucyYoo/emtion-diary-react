@@ -4,10 +4,7 @@ const MyButton = ({ text, type, onClick }) => {
   const btnType = ["positive", "negative"].includes(type) ? type : "default";
 
   return (
-    <Button
-      type={type}
-      onClick={onClick}
-    >
+    <Button type={btnType} onClick={onClick}>
       {text}
     </Button>
   );
@@ -18,19 +15,30 @@ MyButton.defaultProps = {
 };
 export default MyButton;
 
-const buttonType ={
-  default: '#ececec',
-  positive: '#64c964',
-  negative: '#fd565f'
-}
+const buttonType = {
+  default: "#ececec",
+  positive: "#64c964",
+  negative: "#fd565f",
+};
+
+const buttonhoverType = {
+  default: "#e2e2e2",
+  positive: "#5bba5b",
+  negative: "#e84f57",
+};
 
 const Button = styled.button`
-cursor: pointer;
-border: none;
-border-radius: 5px;
-padding: 10px 20px;
-font-size: 18px;
-white-space: nowrap;
-font-family: "Nanum Pen Script";
-background-color: ${({type}) => buttonType[type]}
-`
+  cursor: pointer;
+  height: 41px;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  font-size: 18px;
+  white-space: nowrap;
+  font-family: "Gowun Dodum", sans-serif;
+  background-color: ${({ type }) => buttonType[type]};
+
+  &:hover {
+    background-color: ${({ type }) => buttonhoverType[type]};
+  }
+`;

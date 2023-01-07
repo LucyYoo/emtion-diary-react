@@ -13,28 +13,29 @@ const MyHeader = ({ headText, leftChild, rightChild }) => {
 export default MyHeader;
 
 const Header = styled.header`
-padding: 20px 0;
-display: flex;
-align-items: center;
-border-bottom: 1px solid #e2e2e2;
-
-& div {
+  padding: 20px 0;
   display: flex;
-}
-`
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+
+  & div {
+    display: flex;
+  }
+`;
 
 const HeadText = styled.div`
-width: 50%;
-font-size: 25px;
-justify-content: center;
-`
+  width: 50%;
+  font-size: 25px;
+  font-weight: bold;
+  justify-content: center;
+`;
 
 const HeadBtnLeft = styled.div`
-width: 25%;
-justify-content: start;
-`
+  width: 25%;
+  justify-content: start;
+`;
 
 const HeadBtnRight = styled.div`
-width: 25%;
-justify-content: end;
-`
+  width: 25%;
+  justify-content: end;
+`;

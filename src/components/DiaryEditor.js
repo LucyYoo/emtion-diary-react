@@ -1,12 +1,12 @@
-import { useContext, useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
 import MyButton from "./MyButton";
 import MyHeader from "./MyHeader";
 import EmotionItem from "./EmotionItem";
-import { DiaryDispatchContext } from "../App";
 import { getStringDate } from "../utils/date";
 import { emotionList } from "../utils/emotion";
+import { useDiaryDispatch } from "../context/DiaryContext";
 
 const DiaryEditor = ({ isEdit, originData }) => {
   const contentRef = useRef();
@@ -15,7 +15,7 @@ const DiaryEditor = ({ isEdit, originData }) => {
   const [date, setDate] = useState(getStringDate(new Date()));
   const navigate = useNavigate();
 
-  const { onCreate, onEdit, onRemove } = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit, onRemove } = useDiaryDispatch();
   const handleClickEmotion = useCallback((emotion) => {
     setEmotion(emotion);
   }, []);
@@ -42,11 +42,11 @@ const DiaryEditor = ({ isEdit, originData }) => {
   };
 
   const handleRemove = () => {
-    if(window.confirm('정말 삭제하시겠습니까?')) {
+    if (window.confirm("정말 삭제하시겠습니까?")) {
       onRemove(originData.id);
-      navigate('/', {replace: true})
+      navigate("/", { replace: true });
     }
-  }
+  };
   useEffect(() => {
     if (isEdit) {
       setDate(getStringDate(new Date(parseInt(originData.date))));
@@ -59,10 +59,10 @@ const DiaryEditor = ({ isEdit, originData }) => {
       <MyHeader
         headText={isEdit ? "일기 수정하기" : "새 일기 쓰기"}
         leftChild={<MyButton text="뒤로가기" onClick={() => navigate(-1)} />}
-        rightChild ={
-          isEdit && 
-            <MyButton text="삭제하기" type="negative" onClick={handleRemove}/>
-          
+        rightChild={
+          isEdit && (
+            <MyButton text="삭제하기" type="negative" onClick={handleRemove} />
+          )
         }
       />
       <InputBox>
@@ -130,7 +130,7 @@ const InputDate = styled.input`
   background-color: #ececec;
   padding: 10px 20px;
   cursor: pointer;
-  font-family: "Nanum Pen Script";
+  font-family: "Gowun Dodum", sans-serif;
   font-size: 20px;
 `;
 
@@ -145,7 +145,7 @@ const TextWrapper = styled.div`
   margin-bottom: 40px;
 
   & textarea {
-    font-family: "Nanum Pen Script";
+    font-family: "Gowun Dodum", sans-serif;
     font-size: 20px;
     box-sizing: border-box;
     width: 100%;
